@@ -6,9 +6,11 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,7 +22,8 @@ import lombok.Setter;
 public class FoodOrder {
 	@Id
 	@EqualsAndHashCode.Include
-	@GeneratedValue
+	@SequenceGenerator(initialValue = 1110001, name = "ACCNUM_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "ORDER_SEQ", strategy = GenerationType.AUTO)
 	private UUID oredrId;
 	
 	private Integer userId;
